@@ -25,7 +25,7 @@ def main():
         elif choice == "5":
             display_all_users()
         elif choice == '6':
-            print("Exiting... 👋")
+            print("Exiting... ")
             break
         else:
             print("Invalid choice. Try again!")
@@ -209,7 +209,7 @@ def show_user_screen():
     i_warn_label.pack(side=tkinter.LEFT, padx=10)
 
     # Instructions for the MindMM12
-    inst0_label = tkinter.Label(root, text="""📝 Instructions:
+    inst0_label = tkinter.Label(root, text=""" Instructions:
 - The Quiz contains 20 questions in total.
 - Difficulty increases with each question.
 - You will get +4 points for every correct answer.
@@ -590,7 +590,7 @@ def add_question():
     """
     cur.execute(query, (question_text, option1, option2, option3, option4, correct_option, hint if hint else None))
     conn.commit()
-    print("✅ Question added successfully!")
+    print(" Question added successfully!")
     cur.close()
     conn.close()
 
@@ -623,7 +623,7 @@ def update_question():
     cur.execute("SELECT * FROM questions WHERE question_id = %s", (question_id,))
     result = cur.fetchone()
     if not result:
-        print("❌ No such question ID found.")
+        print(" No such question ID found.")
         return
 
     print(f"Current question: {result[1]}")
@@ -646,7 +646,7 @@ def update_question():
         new_option4, int(new_correct_option), new_hint, question_id
     ))
     conn.commit()
-    print("✅ Question updated successfully!")
+    print(" Question updated successfully!")
     cur.close()
     conn.close()
 
@@ -659,9 +659,9 @@ def delete_question():
     conn.commit()
 
     if cur.rowcount > 0:
-        print("✅ Question deleted.")
+        print(" Question deleted.")
     else:
-        print("❌ No question found with that ID.")
+        print(" No question found with that ID.")
 
     cur.close()
     conn.close()
